@@ -22,6 +22,7 @@ main {
     margin-top: 100px;
     box-shadow : 0px 0px 3px grey;
     position: relative;
+    overflow: hidden; /*The images which were (100%,200% door) were overflow and now are hidden*/
 }
  
 .slide {
@@ -29,6 +30,7 @@ main {
     width : 100%;
     height : 100%;
     position: absolute;
+    transition: 1s;
 
 }
 </style>
@@ -47,11 +49,14 @@ main {
     <script> 
     const slides = document.querySelectorAll(".slide")
     var counter = 0;
-    console.log(slides);
+    console.log(slides);  // 4 elements 
 
-    slides.forEach(
-        (slide,index) => {
-        slide.style.left = `${index * 100}%`
+    slides.forEach(       // 
+        (slide,index) => {  // slide = object of particular image
+        slide.style.left = `${index * 100}%`  
+        //1st image   0 % door
+        //2nd image  100 % door
+        //3rd image  200 %  door
     }
     )
     function GoPrev(){
@@ -70,6 +75,10 @@ main {
         slides.forEach(
             (slide) => {
                 slide.style.transform = `translateX(-${counter * 100}%)`
+
+                // translateX(-${0}%)
+                // translateX(-${100}%)
+                // translateX(-${200}%)
             }
         )
     }
